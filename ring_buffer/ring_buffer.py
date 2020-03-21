@@ -15,7 +15,7 @@ class RingBuffer:
         if self.current is None:
             self.storage.add_to_head(item)
             self.current = self.storage.head
-        elif self.current.next is None:
+        elif self.current.next is None and self.storage.length <= self.capacity:
             self.current.insert_after(item)
             self.current = self.current.next
 
@@ -25,7 +25,7 @@ class RingBuffer:
             self.current = self.storage.tail
 
         else:
-            self.current.next.delete()
+            self.storage.delete(self.current.next)
             self.current.insert_after(item)
             self.current = self.current.next
             
