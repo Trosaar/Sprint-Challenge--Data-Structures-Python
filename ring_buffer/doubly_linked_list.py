@@ -48,6 +48,18 @@ class DoublyLinkedList:
     def __len__(self):
         return self.length
 
+    def __str__(self):
+        if self.head is None and self.tail is None: 
+            return "empty"
+        curr_node = self.head
+        output = ''
+        output += f'( {curr_node.value} ) <-> '
+        while curr_node.next is not None:
+            curr_node = curr_node.next 
+            output += f'( {curr_node.value} ) <-> '
+        return output
+
+
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
